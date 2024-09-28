@@ -49,10 +49,10 @@ public class Main {
             if (language.equals(quit)) {
                 break;
             }
-            System.out.println(country + " in " + language + " is " + translator
-                    .translate(countryCodeConverter.fromCountry(country),
-                            languageCodeConverter.fromLanguage(language)));
-            System.out.println("Press enter to continue or quit to exit.");
+            String output = country + " in " + language + " is "
+                    + translator.translate(countryCodeConverter.fromCountry(country),
+                    languageCodeConverter.fromLanguage(language)) + "\n" + "Press enter to continue or quit to exit.";
+            System.out.print(output);
             Scanner s = new Scanner(System.in);
             String textTyped = s.nextLine();
 
@@ -77,11 +77,13 @@ public class Main {
 
         Collections.sort(newCountries);
 
+        // Build the output for country selection
+        StringBuilder output = new StringBuilder();
         for (String country : newCountries) {
-            System.out.println(country);
+            output.append(country).append("\n");
         }
-
-        System.out.println("select a country from above:");
+        output.append("select a country from above:\n");
+        System.out.print(output.toString());
 
         Scanner s = new Scanner(System.in);
         return s.nextLine();
@@ -106,11 +108,13 @@ public class Main {
 
         Collections.sort(newLanguages);
 
+        // Build the output for language selection
+        StringBuilder output = new StringBuilder();
         for (String language : newLanguages) {
-            System.out.println(language);
+            output.append(language).append("\n");
         }
-
-        System.out.println("select a language from above:");
+        output.append("select a language from above:\n");
+        System.out.print(output.toString());
 
         Scanner s = new Scanner(System.in);
         return s.nextLine();
